@@ -12,6 +12,7 @@ $(document).ready(function () {
         $("#botones").append(boton);
         //Detecta si dan un click en un boton.
         boton.click(function() { 
+            //Guarda en la variable el valor del boton clickeado.
             var numero = parseInt($(this).val()); 
             var suma = parseInt($("#resultado").text()); 
             suma += numero; 
