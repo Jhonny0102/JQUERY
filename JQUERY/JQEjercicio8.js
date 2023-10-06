@@ -24,11 +24,11 @@
 // });
 
 $(document).ready(function () {
-    
+    //Al dar click hara lo siguiente.
     $("#buscarnota").click(function () { 
-        
+        //Guardamos el valor del id indicado.
         var nota = parseInt($("#nota").val());
-
+        //Variable vacia.
         var html = "";
         //Obtenemos el documetno xml y lo guardamos en data.
         $.get("documentos/alumnos.xml", function (data) {
