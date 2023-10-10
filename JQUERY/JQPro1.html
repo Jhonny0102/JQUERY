@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto JQUERY Principal</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <h1>Lista Hospitales</h1>
+    <table id="infohospitales" border="1">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Camas</th>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    
+    
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <script>
+        var urlhospital = "https://apicrudhospital.azurewebsites.net/";
+        $(document).ready(function () {
+            cargarhospitales();
+        });
+        function cargarhospitales(){
+            var request = "webresources/hospitales";
+            $.getJSON(urlhospital+request, function (data) {
+                var html = "";
+                $.each(data, function(index,hospitales){
+                    html += "<tr>";
+                    html +="<td>" + hospitales.idhospital + "</td>";
+                    html +="<td>" + hospitales.nombre + "</td>";
+                    html +="<td>" + hospitales.direccion + "</td>";
+                    html +="<td>" + hospitales.telefono + "</td>";
+                    html +="<td>" + hospitales.camas + "</td>";
+                    html +="<td> <a href='JQPro1-insertar.html'>Insertar</a>";
+                    html += "<a href='JQPro1-editar.html?idhospital="+ hospitales.idhospital + "'>Editar</a>";
+                    html += "<a href='JQPro1-eliminar.html?idhospital="+ hospitales.idhospital + "'>Eliminar</a> </td>";
+                    html +="</tr>";
+                    
+                });
+                $("#infohospitales tbody").html(html);
+            });
+        };
+    </script>
+</body>
+</html>

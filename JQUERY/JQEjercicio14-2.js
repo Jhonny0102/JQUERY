@@ -47,10 +47,24 @@ $(document).ready(function () {
                             });
                             //console.log("LLego hasta la tabla");
                             //Agregamos el html en el id indicado.
-                            $("#tabla tbody").html(html);  
+                            $("#tabla tbody").html(html);     
                         });
                     }
                 });
+            });
+        });
+        //HAy que verlo proque no se cambia
+        $("#botonincremento").click(function () { 
+            var oficio = $("#oficios").val();
+            var incremento = parseInt($("#cajaincremento").val());
+            console.log(oficio + " " + incremento);
+            var request = "api/empleados/incrementarsalariooficios/"+oficio+"/"+incremento;
+            $.ajax({
+                type: "PUT",
+                url: urlEmpleados+request,
+                success: function () {
+                    console.log("Datos modificado");
+                }
             });
         });
     });

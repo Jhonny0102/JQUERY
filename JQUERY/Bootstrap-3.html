@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Incluir siempre un CSS -->
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <!-- Se supone que teniamos que implementr un alert para proseguir el incremento -->
+</head>
+<body>
+    <h1>Empleados Oficios</h1> 
+    <select id="selectoficio" class="form-label"></select> 
+    <label>Incremento salarial: </label> 
+    <input type="text" id="cajaincremento" class="input-group mb-3"/> 
+    <button id="botonincrementar" class="btn btn-dark">Incrementar salarios</button> 
+    <br/> 
+    <table id="tablaempleados" class="table table-striped"> 
+        <thead> 
+        <tr> 
+            <th>Apellido</th> 
+            <th>Oficio</th> 
+            <th>Salario</th> 
+        </tr> 
+        </thead> 
+        <tbody></tbody> 
+    </table> 
+
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script>
+        var urlEmpleados = "https://apiempleadosaction.azurewebsites.net/"; 
+
+        $(document).ready(function() { 
+        var request = "api/empleados/getoficios/oficios"; 
+        
+        $.ajax({ 
+            "url": urlEmpleados + request,  
+            "type": "GET", 
+            success: function(data){ 
+                $.each(data, function(index, oficio){ 
+                    var option = $("<option>", {"text": oficio, "value": oficio}); 
+                    $("#selectoficio").append(option); 
+                }) 
+            } 
+        }) 
+
+        $("#selectoficio").change(function() { 
+            console.log("Acción"); 
+            var oficio = $(this).val(); 
+            cargarEmpleados(oficio); 
+        }) 
+
+            $("#botonincrementar").click(function() { 
+
+                var oficio = $("#selectoficio").val(); 
+
+                var incremento = parseInt($("#cajaincremento").val()); 
+
+                var request = "api/empleados/incrementarsalariooficios/"  + oficio + "/" + incremento; 
+
+                $.ajax({ 
+
+                    "url": urlEmpleados + request, 
+
+                    "type": "PUT",  
+
+                    success: function() { 
+
+                        console.log("Datos modificados"); 
+
+                        cargarEmpleados(oficio); 
+
+                    } 
+                }) 
+            }) 
+        }) 
+
+        function cargarEmpleados(oficio){ 
+
+            var request = "api/Empleados/getempleadosoficio/empleadosoficio/" + oficio;
+
+            console.log(urlEmpleados + request); 
+            
+            $.getJSON(urlEmpleados + request, function(data){ 
+                console.log("Leyendo"); 
+                console.log(data); 
+                var html = ""; 
+            $.each(data, function(index, empleado){ 
+            console.log("Bucle"); 
+            html += "<tr>"; 
+            html += "<td>" + empleado.apellido + "</td>"; 
+            html += "<td>" + empleado.oficio + "</td>"; 
+            html += "<td>" + empleado.salario + "</td>"; 
+            html += "</tr>"; 
+        }) 
+
+        console.log(html); 
+
+        $("#tablaempleados tbody").html(html); 
+
+        }) 
+
+        } 
+    </script>
+</body>
+</html>

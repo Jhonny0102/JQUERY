@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitales Insertar</title>
+</head>
+<body>
+    <h1>Insertar hospitales</h1>
+    <label for="">ID Hospital</label>
+    <input type="text" name="id_hospital" id="id_hospital"><br>
+    <label for="">Nombre</label>
+    <input type="text" name="nombre" id="nombre"><br>
+    <label for="">Direccion</label>
+    <input type="text" name="dirr" id="dirr"><br>
+    <label for="">Telefono</label>
+    <input type="text" name="telf" id="telf"><br>
+    <label for="">Camas</label>
+    <input type="text" name="camas" id="camas"><br>
+    <button id="pulsar">Insertar</button>
+    
+
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <script>
+        var urlhospital = "https://apicrudhospital.azurewebsites.net/";
+        $(document).ready(function () {
+
+            //Boton Insertar//
+            $("#pulsar").click(function () { 
+                var id_hospital = $("#id_hospital").val();
+                var dirr = $("#dirr").val();
+                var telf = $("#telf").val();
+                var camas = $("#camas").val();
+                var nombre = $("#nombre").val();
+                var request="webresources/hospitales/post";
+
+                var hospital = new Object();
+                hospital.idhospital=id_hospital;
+                hospital.nombre=nombre;
+                hospital.direccion=dirr;
+                hospital.telefono=telf;
+                hospital.camas=camas;
+                var dataJSON = JSON.stringify(hospital);
+
+                console.log(dataJSON);
+
+                $.ajax({
+                    type: "POST",
+                    url: urlhospital+request,
+                    data: dataJSON,
+                    contentType: "application/json",
+                    success: function (response) {
+                        alert("Insertado");
+                        var pagina = "JQPro1.html";
+                        $(location).attr('href',pagina);
+                    }
+                });
+            });
+            //Fin boton Insertar
+
+
+
+        });
+    </script>
+</body>
+</html>
