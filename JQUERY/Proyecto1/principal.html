@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Hospital</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="fs-1">Información Hospitales</h1>    
+    <table id="tablahospital" class="table">
+        <thead class="table-dark">
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Camas</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script>
+        var url = "https://apicrudhospital.azurewebsites.net/";
+        $(document).ready(function () {
+            cargarinformacion();
+        });
+        function cargarinformacion(){
+            var request = "webresources/hospitales";
+            $.getJSON(url+request, function (data) {
+                var html = "";
+                $.each(data, function (index, hospital) { 
+                    html += "<tr>";
+                    html += "<td>" + hospital.idhospital + "</td>";
+                    html += "<td>" + hospital.nombre + "</td>";
+                    html += "<td>" + hospital.direccion + "</td>";
+                    html += "<td>" + hospital.telefono + "</td>";
+                    html += "<td>" + hospital.camas + "</td>";
+                    html +="<td>";
+                        html +="<a href='insertar.html' class='link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Insertar</a> ";
+                        html +="<a href='editar.html?id=" + hospital.idhospital + "' class='link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Editar</a> ";
+                        html +="<a " + hospital.idhospital + "' class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Eliminar</a> ";
+                    html +="</td>";
+                    html += "</tr>";    
+                });
+                $("#tablahospital tbody").html(html);
+
+                //////////   Revisar y completa la parte de eliminar ////////////////
+            });
+        };
+
+
+    </script>
+</body>
+</html>

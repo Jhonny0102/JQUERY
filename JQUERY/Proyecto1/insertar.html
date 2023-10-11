@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Hospital</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="h1">Insertar Hospitales</h1>
+    <form action="">
+        <label for=""class="form-label">ID Hospital</label>
+        <input type="text" name="id_hospital" id="id_hospital" class="form-control">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="form-control">
+        <label for="" class="form-label">Dirección</label>
+        <input type="text" name="direccion" id="direccion" class="form-control">
+        <label for="" class="form-label">Teléfono</label>
+        <input type="text" name="telf" id="telf" class="form-control">
+        <label for="" class="form-label">Camas</label>
+        <input type="text" name="camas" id="camas" class="form-control"><br>
+        <button id="boton" class="btn btn-outline-success">Pulsar</button>
+
+    </form>
+    <a href="principal.html">Volver</a>
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script>
+        //Variable global, donde almacenamos el url del recurso a consumir.
+        var url = "https://apicrudhospital.azurewebsites.net/";
+
+        //Preparamos el documento.
+        $(document).ready(function () {
+
+            //Al dar click en el id indicado.
+            $("#boton").click(function () { 
+
+               //Guarda y crea la accion, en este caso es un post.
+                var request = "webresources/hospitales/post";
+
+                //Variables del formulario.
+                var id = $("#id_hospital").val();
+                var nombre = $("#nombre").val();
+                var direccion = $("#direccion").val();
+                var telf = $("#telf").val();
+                var camas = $("#camas").val();
+
+                //Convertimos a formato JSON con la siguiente funcion, donde pasamos por parametro unoas variables.
+                var dataJSON = formatoJSON(id,nombre,direccion,telf,camas);
+
+                //Metodo ajax para empezar con la accion.
+                $.ajax({
+                    type: "POST",
+                    url: url+request,
+                    data: dataJSON,
+                    contentType: "application/json",
+                    success: function () {
+                        alert("Registro insertado");
+                        // var pagina = "principal.html";
+                        window.location.href = "principal.html";
+                    }
+                });
+            });
+        });
+        //Funcion con la finalidad de devolver una variable en formato JSON, pasando por parametros algunas variables.
+        function formatoJSON(id,nombre,direccion,telf,camas){
+
+            //Creamos un objeto.
+            var hospital = new Object();
+
+            //Asiganamos algunos valores a cada apartado del objeto.
+            hospital.idhospital = id;
+            hospital.nombre = nombre;
+            hospital.direccion = direccion;
+            hospital.telefono = telf;
+            hospital.camas = camas;
+
+            //Guardamos en la variable el objeto hospital pasado a formato JSON.
+            var dataJSON = JSON.stringify(hospital);
+
+            //Devolvemos la variable.
+            return dataJSON;
+        };
+    </script>
+</body>
+</html>

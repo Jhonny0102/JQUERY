@@ -1,0 +1,7 @@
+=======================
+== Comandos React =====
+=======================
+
+1. Crear proyecto : npx create-react-app "nombre" 
+2. Abrir proyecto : code .
+3. Abrir servidor : npm start

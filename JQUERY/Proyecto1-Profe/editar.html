@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Hospitales</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+</head>
+<body>
+    <h1>Editar Hospitales</h1>
+    <form action="">
+        <label for="">Id Hospital</label>
+        <input type="text" name="id_h" id="id_h" disabled><br><br>
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" id="nombre"><br><br>
+        <label for="">Direccion</label>
+        <input type="text" name="dirr" id="dirr"><br><br>
+        <label for="">Telefono</label>
+        <input type="text" name="telf" id="telf"><br><br>
+        <label for="">Camas</label>
+        <input type="text" name="camas" id="camas"><br><br>
+        <button id="boton" type="button">Pulsar</button>
+    </form>
+
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script>
+        var url = "https://apicrudhospital.azurewebsites.net/";
+        $(document).ready(function () {
+            
+            var params = new Window.URLSearchParamas(window.location.search);
+
+            var idhospital = params.get("id");
+
+            var request = "webresources/hospitales/"+idhospital;
+
+            $.ajax({
+                type: "PUT",
+                url: url+request ,
+                data: "data",
+                dataType: "dataType",
+                success: function (response) {
+                    
+                }
+            });
+
+        });
+
+    </script>
+</body>
+</html>
