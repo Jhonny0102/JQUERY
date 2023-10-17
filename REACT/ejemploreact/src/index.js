@@ -6,11 +6,13 @@ import reportWebVitals from './components/reportWebVitals';
 import Suma from "./components/SumarNumeros/SumarNumeros"
 import ParentMates from './components/PadreMatematicas';
 import Contar from './components/Contador';
+import Car from './components/car';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Contar/>
+    <Car marca="Renault" modelo="Talisman" aceleracion="60" velocidadmaxima="250"/>
+    <Car marca="Opel" modelo="Insignia" aceleracion="80" velocidadmaxima="300"/>
   </React.StrictMode>
 );
 
