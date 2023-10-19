@@ -5,3 +5,6 @@
 1. Crear proyecto : npx create-react-app "nombre" 
 2. Abrir proyecto : code .
 3. Abrir servidor : npm start
+4. instalar Routing dentro de React: npm install --save react-router-dom
+5. Instalar axion(poder leer cualquier  servicio) : npm install --save axios 
+6. Al cambiar de poryecto : npm install
