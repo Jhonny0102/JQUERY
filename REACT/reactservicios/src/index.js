@@ -8,11 +8,16 @@ import BuscadorCustomer from './components/BuscadorCustomer';
 import ServiceCoches from './components/ServiceCoches';
 import DepartamentoEmpleados from './components/DepartamentoEmpleados';
 import EmpleadosOficios from './components/EmpleadosOficios';
+import Departamentos from './components/MaestroDetalle/Departamentos';
+import Router from './components/Router';
+import MenuRutas from './components/RutasParametros/MenuRutas';
+import ConjeturaCollatz from './components/RutaCollatz/ConjeturaCollatz';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EmpleadosOficios />
+    <ConjeturaCollatz />
+    
   </React.StrictMode>
 );
 
