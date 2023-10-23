@@ -8,3 +8,5 @@
 4. instalar Routing dentro de React: npm install --save react-router-dom
 5. Instalar axion(poder leer cualquier  servicio) : npm install --save axios 
 6. Al cambiar de poryecto : npm install
+7. Instalar BootsTrap: npm install --save bootstrap
+8. Instalar adicionales : npm install --save jquery popper.js
