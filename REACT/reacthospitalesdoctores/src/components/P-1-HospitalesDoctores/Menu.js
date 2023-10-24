@@ -20,6 +20,12 @@ export default class Menu extends Component {
                 <li className="nav-item">
                   <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                 </li>
+                <li className='nav-item'>
+                  <NavLink to={"/createhospitales"} className="nav-link active" aria-current="page" >Agregar</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" to="/listahospitales">Lista Hospitales</NavLink>
+                </li>
                 <li className="nav-item">
                   <NavLink className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Hospitales

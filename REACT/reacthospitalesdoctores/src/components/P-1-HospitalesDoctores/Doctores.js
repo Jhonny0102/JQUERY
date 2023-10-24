@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import Global from '../Global';
 import DetallesDoctor from './DetallesDoctor';
+import { NavLink } from 'react-router-dom';
 
 export default class Doctores extends Component {
     //Este componente esta a la esperar de pasar por parametros un valor, en este caso una ID Hospital.
@@ -12,7 +13,9 @@ export default class Doctores extends Component {
 
         doctores : [] ,
 
-        statusDoctores : false
+        statusDoctores : false ,
+
+        idRecibido : -1
     }
 
     //Metodo para obtener la informacion de los doctores.
@@ -35,9 +38,14 @@ export default class Doctores extends Component {
         })
     }
 
-    llamarDetalles = () => {
+    llamarDetalles = (idDoctor) => {
 
+        this.setState({
 
+            idRecibido : idDoctor
+        })
+
+        //console.log(this.state.idRecibido);
     }
 
     //Metodo que cargara la funcion cuando incie la pagina.
@@ -63,12 +71,11 @@ export default class Doctores extends Component {
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID Doctor</th>
                         <th>Apellido</th>
                         <th>Especialidad</th>
-                        <th>Salario</th>
                         <th>ID Hospital</th>
                         <th>Detalles</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,12 +86,11 @@ export default class Doctores extends Component {
                             this.state.doctores.map( (doctor,index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{doctor.idDoctor}</td>
                                         <td>{doctor.apellido}</td>
                                         <td>{doctor.especialidad}</td>
-                                        <td>{doctor.salario}</td>
                                         <td>{doctor.idHospital}</td>
-                                        <td><button type="button" className="btn btn-success">Detalles</button></td>
+                                        <td><button type="button" className="btn btn-success" onClick={() => this.llamarDetalles(doctor.idDoctor)}>Detalles</button></td>
+                                        <td><NavLink to={"/detallesdoctor/" + doctor.idDoctor}>Detalles</NavLink></td>
                                     </tr>
                                 )
                             })
@@ -92,6 +98,13 @@ export default class Doctores extends Component {
                     }
                 </tbody>
             </table>
+            <h2 style={{color:"blue"}}>Informacion Doctor</h2>
+            {
+                this.state.idRecibido != -1 &&
+                (
+                    <DetallesDoctor iddoctor={this.state.idRecibido}/>
+                )
+            }
       </div>
     )
   }
