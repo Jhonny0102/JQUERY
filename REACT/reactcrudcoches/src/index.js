@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HomeDepatamento from './components/HomeDepatamento';
+import Router from './Router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import MenuDepartamento from './components/MenuDepartamento';
-import Router from './Router';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router/>
-    
+    <Router />
   </React.StrictMode>
 );
 
