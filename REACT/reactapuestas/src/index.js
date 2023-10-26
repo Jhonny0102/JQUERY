@@ -7,7 +7,7 @@ import Router from './Router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
-import { Popover } from 'bootstrap';
+import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

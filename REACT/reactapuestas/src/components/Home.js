@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Espera from './../assets/images/espera.jpg';
+import logo from './../assets/images/logo.png';
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-            <h1>Home</h1>
-            <img src={Espera} className="img-fluid"/>
+        <h1>Home</h1>
+        <img src={logo} className="rounded mx-auto d-block" />
       </div>
     )
   }

@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Router from './Router';
+import Hospitales from './components/Hospitales';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
-import { Popover } from 'bootstrap';
+import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router />
+    <Hospitales />
   </React.StrictMode>
 );
 
