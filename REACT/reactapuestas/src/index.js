@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
+import "bootstrap/dist/css/bootstrap.min.css";
+import $ from "jquery";
 import Popper from 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle';
+import "bootstrap/dist/js/bootstrap.bundle"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

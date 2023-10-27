@@ -1,0 +1,9 @@
+======================
+==== Comandos VUE ====
+======================
+
+1. Instalar : npm install -g @vue/cli
+2. Crear proyecto: vue create "NOMBREPROYECTO"
+    2.1. Default VUE3
+    2.2. Use NPM
+3. Arrancar servidor : npm run serve

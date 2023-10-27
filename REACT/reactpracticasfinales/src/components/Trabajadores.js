@@ -22,11 +22,11 @@ export default class Trabajadores extends Component {
             otro += "&idhospital="+seleccionados[i];
         }
 
+        otro = otro.substring(0,otro.length-1)
+
         var request = "api/trabajadores/trabajadoresHospitales?"+otro;
 
         var url = Global.apiHospitales + request;
-
-        //console.log(url);
 
         axios.get(url).then( response => {
 
@@ -38,6 +38,7 @@ export default class Trabajadores extends Component {
             })
         })
     }
+
 
     componentDidUpdate = (oldProps) => {
 
@@ -71,7 +72,8 @@ export default class Trabajadores extends Component {
             </thead>
             <tbody>
                 {
-                    this.state.trabajador.map( (trabajador,index) => {
+                    this.state.status == true &&
+                    (this.state.trabajador.map( (trabajador,index) => {
 
                         return(
                             <tr key={index}>
@@ -82,7 +84,7 @@ export default class Trabajadores extends Component {
                                 <td>{trabajador.idHospital}</td>
                             </tr>
                         )
-                    })
+                    }))
                 }
             </tbody>
         </table>

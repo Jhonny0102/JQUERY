@@ -49,11 +49,7 @@ export default class Hospitales extends Component {
         })
     }
 
-    obtenerSeleccionados = (e) => {
-
-        e.preventDefault();
-
-        var options = this.cajaSelect.current.options;
+    getSeleccionados = () => {
 
         var datos = [];
 
@@ -64,6 +60,17 @@ export default class Hospitales extends Component {
                 datos.push(parseInt(option.value));
             }
         }
+
+        return datos;
+    }
+
+    obtenerSeleccionados = (e) => {
+
+        e.preventDefault();
+
+        var options = this.cajaSelect.current.options;
+
+        var datos = this.getSeleccionados();
 
         this.setState({
 
@@ -78,34 +85,6 @@ export default class Hospitales extends Component {
 
         e.preventDefault();
 
-        var incremento = this.cajaIncremento.current.value;
-
-        var seleccionados = this.state.seleccionados;
-
-        var urlIncremento = "?incremento="+incremento;
-
-        var otro = "";
-
-        for(var i=0 ; i< seleccionados.length ; i++){
-
-            otro += "&idhospital="+seleccionados[i];
-        }
-
-        var request = "api/trabajadores/updatesalariotrabajadoreshospitales";
-
-        var url = Global.apiHospitales + request + urlIncremento + otro ;
-
-        alert(url);
-
-        axios.put(url).then(response => {
-
-            this.setState({
-                seleccionados: seleccionados,
-                reload: true,
-                statusPut : true
-            })
-
-        })
     }
 
     ///////////////////////////////

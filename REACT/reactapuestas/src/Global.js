@@ -1,6 +1,6 @@
 var Global = {
 
-    apiApuestas : "https://apiapuestas.azurewebsites.net/"
+    apiApuesta : "https://apiapuestas.azurewebsites.net/"
 
 }
 

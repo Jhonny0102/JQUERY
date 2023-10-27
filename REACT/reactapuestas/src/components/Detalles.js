@@ -1,29 +1,30 @@
 import React, { Component } from 'react'
-import Global from '../Global';
 import axios from 'axios';
+import Global from '../Global';
+import { NavLink } from 'react-router-dom'
 
 export default class Detalles extends Component {
 
     state = {
 
-        informacion : [] ,
+        equipo : {} ,
 
         status : false
     }
 
-    loadEquipo = () => {
+    cargaInformacion = () => {
 
         var id = this.props.idequipo;
 
         var request = "api/equipos/"+id;
 
-        var url = Global.apiApuestas + request;
+        var url = Global.apiApuesta + request;
 
         axios.get(url).then( response => {
 
             this.setState({
 
-                informacion : response.data ,
+                equipo : response.data ,
 
                 status : true
             })
@@ -32,31 +33,41 @@ export default class Detalles extends Component {
 
     componentDidMount = () => {
 
-        this.loadEquipo();
+        this.cargaInformacion();
+    }
+
+    componentDidUpdate = (oldProps) => {
+
+        if (this.props.idequipo != oldProps.idequipo){ 
+
+            this.cargaInformacion(); 
+            
+        }
     }
 
 
-  render() {
-    return (
-      <div>
-        <h1>Detalles del equipo : {this.props.idequipo}</h1>
-        <h1>Detalles del equipo : {this.props.idequipo}</h1>
-        <table className="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>{this.state.informacion.nombre}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <img src={this.state.informacion.imagen} className="rounded mx-auto d-block" style={{width:"150px"}} />
-                        
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-    )
-  }
+
+    render() {
+        return (
+        <div>
+            <h1>Detalles: {this.props.idequipo}</h1>
+            <div className="d-flex justify-content-center">
+                {this.state.equipo.nombre}
+            </div>
+            <div className="d-flex justify-content-center">
+                <img src={this.state.equipo.imagen} style={{width:"250px",height:"250px"}}/>
+            </div>
+            <div className="d-flex justify-content-center">
+                Champions : {this.state.equipo.champions}
+            </div>
+            <div className="d-flex justify-content-center">
+                {this.state.equipo.descripcion}
+            </div>
+            <div className="d-flex justify-content-center">
+                <NavLink to={"/jugadores/"+this.props.idequipo} className="btn btn-success">Jugadores</NavLink>
+                <NavLink to={"/"} className="btn btn-info">Volver</NavLink>
+            </div>
+        </div>
+        )
+    }
 }
