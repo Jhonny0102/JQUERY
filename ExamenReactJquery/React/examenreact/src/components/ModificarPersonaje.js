@@ -31,8 +31,6 @@ export default class ModificarPersonaje extends Component {
 
         var serie = this.cajaSerie.current.value;
 
-        //console.log(personaje + " , " + serie)
-
         var request = "api/personajes/"+personaje+"/"+serie;
 
         var url = Global.api + request ;
@@ -85,7 +83,6 @@ export default class ModificarPersonaje extends Component {
 
     }
 
-
     componentDidMount = () => {
 
         this.loadPersonajes();
@@ -96,12 +93,12 @@ export default class ModificarPersonaje extends Component {
   render() {
     return (
       <div>
-            {/* {
-                this.state.statusPUT == true &&
+            {
+                this.state.statusPUT === true &&
                 (
-                  <Navigate to={"/personajes/"+this.props.idserie}/>  
+                  <Navigate to={"/personajes/"+this.cajaSerie.current.value}/>  
                 )
-            } */}
+            }
             <h1>Modificar personaje</h1>
 
             <form>

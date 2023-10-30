@@ -82,12 +82,12 @@ export default class CrearPersonaje extends Component {
   render() {
     return (
       <div>
-        {/* {
+        {
             this.state.statusPost == true && 
             (
-                <Navigate to={"/personajes/"+this.props.idserie}/> //Ver que falla
+                <Navigate to={"/personajes/"+this.cajaSerie.current.value}/> 
             )
-        } */}
+        }
             <h1>Nuevo personaje</h1>
 
             <form>
@@ -119,6 +119,7 @@ export default class CrearPersonaje extends Component {
                 </div>
 
                 <button type="submit" className="btn btn-warning" onClick={this.crearPersonaje}>Crear</button>
+                
                 <NavLink to={"/"} className="btn btn-info">Volver</NavLink>
             </form>
       </div>
