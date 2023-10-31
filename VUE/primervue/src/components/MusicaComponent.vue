@@ -11,7 +11,7 @@
 </script>
 
 <style>
-            img {
+    img {
         width: "150px";
         height: "150px";
     }

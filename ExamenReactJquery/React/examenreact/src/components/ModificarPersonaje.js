@@ -111,7 +111,7 @@ export default class ModificarPersonaje extends Component {
                                 this.state.personajes.map( (personaje,index) => {
 
                                     return(
-                                        <option key={index} value={personaje.idSerie}>{personaje.nombre}</option>
+                                        <option key={index} value={personaje.idPersonaje}>{personaje.nombre}</option>
                                     )
                                 })
                             )
