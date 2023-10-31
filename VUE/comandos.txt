@@ -7,4 +7,4 @@
     2.1. Default VUE3
     2.2. Use NPM
 3. Arrancar servidor : npm run serve
-4. Instalar rutas : npm install -save vue.router
+4. Instalar rutas : npm install vue-router@next --save
