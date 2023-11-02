@@ -6,7 +6,10 @@
                 <router-link to="/"> Home |</router-link>
             </li>
             <li>
-                <router-link to="/conjetura"> Conjetura Collatz </router-link>
+                <router-link to="/collatz"> Conjetura Collatz |</router-link>
+            </li>
+            <li>
+                <router-link to="/tabla"> Tabla </router-link>
             </li>
         </ul>
     </div>

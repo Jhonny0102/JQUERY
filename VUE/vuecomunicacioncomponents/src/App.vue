@@ -1,18 +1,14 @@
 <template>
-  <div>
-    <h1>Proyecto VUE</h1>
-    <MenuComponents/>
-  </div>
+  <Menu/>
   <router-view></router-view>
 </template>
 
 <script>
-import MenuComponents from './components/MenuComponents.vue'
-
+import Menu from './components/MenuComponents.vue';
 export default {
   name: 'App',
   components: {
-    MenuComponents
+    Menu
   }
 }
 </script>
