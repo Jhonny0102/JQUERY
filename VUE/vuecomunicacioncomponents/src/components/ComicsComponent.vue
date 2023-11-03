@@ -1,15 +1,58 @@
 <template>
     <div>
         <h1>Padre Comic</h1>
+        <form v-on:submit.prevent="crearComic()">
+            <label>Titulo</label>
+            <input type="text" v-modelo="comicForm.titulo"><br/><br/>
+            <label>Imagen</label>
+            <input type="text" v-modelo="comicForm.imagen"><br/><br/>
+            <label>Descripcion</label>
+            <input type="text" v-modelo="comicForm.descripcion"><br/><br/>
+            <label>Año</label>
+            <input type="number" v-modelo="comicForm.year"><br/>
+            <button>
+                Nuevo Comic
+            </button>
+        </form>
+        <div v-if="comicFavorito" style="background-color:lightgreen">
+            <p>{{comicFavorito.titulo}}</p>
+            <img :src="comicFavorito.imagen"/>
+        </div>
+        <div id="comics" v-for="(comic, index) in comics" :key="comic">
+            <ComicComponent :comic="comic" :index="index" v-on:seleccionarFavorito="seleccionarFavorito" v-on:eliminarComic="eliminarComic"/>
+        </div>
     </div>
 </template>
 
 <script>
+import ComicComponent from './ComicComponent.vue';
 export default {
     name:"ComicsComponent",
+    components:{
+        ComicComponent
+    },
+    methods:{
+        seleccionarFavorito(comic){
+            this.comicFavorito = comic
+        },
+        eliminarComic(index){
+            this.comics.splice(index, 1);
+        },
+        crearComic(){
+            this.comics.push(this.comicForm);
+        }
+    },
     data(){
         return{
-            comics:[{
+            comicForm:{
+                titulo:"",
+                descripcion:"",
+                imagen:"",
+                year:0
+            },
+            comicFavorito: null,
+            comics:[
+                {
                 titulo: "Spiderman",
                 imagen:
                     "https://3.bp.blogspot.com/-i70Zu_LAHwI/T290xxduu-I/AAAAAAAALq8/8bXDrdvW50o/s1600/spiderman1.jpg",
@@ -50,7 +93,8 @@ export default {
                     "https://www.comicverso.com/wp-content/uploads/2020/06/The-Killing-Joke-657x1024.jpg",
                 descripcion: "Murcielago"
                 , year: 2001
-                }]
+                }
+            ]
         }
     }
 }

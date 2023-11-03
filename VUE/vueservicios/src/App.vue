@@ -1,16 +1,13 @@
 <template>
-    <Menu/>
-    <MenuTabla/>
-    <router-view></router-view>
+  <CochesComponent/>
 </template>
 
 <script>
-import Menu from './components/MenuComponents.vue';
-import MenuTabla from './components/MenuTabla.vue';
+import CochesComponent from './components/CochesComponent.vue';
 export default {
   name: 'App',
   components: {
-    Menu,MenuTabla
+    CochesComponent
   }
 }
 </script>
