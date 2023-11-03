@@ -8,3 +8,4 @@
     2.2. Use NPM
 3. Arrancar servidor : npm run serve
 4. Instalar rutas : npm install vue-router@next --save
+5. Instalar axios : npm install axios --save
