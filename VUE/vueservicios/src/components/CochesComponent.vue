@@ -1,21 +1,28 @@
 <template>
     <div>
-        <h1>Coches Components</h1>
-        <div v-for="car in coches" :key="car">
-            <h1 style="color:blue">{{car.marca}},{{car.modelo}}</h1>
-            <h2 style="color:red">
-                Conductor:{{car.conductor}}
-            </h2>
-            <img :src="car.imagen" style="width:150px ; height:150px"/>
-        </div>
+        <h1>Coches Component y Servicios</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Coche</th>
+                    <th>Conductor</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody v-for="car in coches" :key="car">
+                <tr>
+                    <td>{{car.marca}}  {{car.modelo}}</td>
+                    <td>{{car.conductor}}</td>
+                    <td><img :src="car.imagen" style="width:150px"/></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Global from './../Global';
-//Si necesito variables que sean declaradas para todos los metodos que tengamos en
-//component lo haremos aqui
+    import ServiceCoches from './../services/ServiceCoches';
+    const service = new ServiceCoches();
 
     export default {
         name:"CochesComponent",
@@ -25,11 +32,8 @@ import Global from './../Global';
             }
         },
         mounted(){
-            var request = "webresources/coches";
-            //Las variables por encima de export default no utilizan this
-            var url = Global.urlApiCoches + request;
-            axios.get(url).then( response => {
-                this.coches = response.data
+            service.getCoches().then(result => {
+                this.coches = result;
             })
         }
     }

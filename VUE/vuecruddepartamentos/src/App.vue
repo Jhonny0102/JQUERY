@@ -1,15 +1,14 @@
 <template>
-  <MenuComponent/>
-  <!-- No te olvide de poner esto, permite ver los componentes -->
+  <MenuDepartamentos/>
   <router-view></router-view>
 </template>
 
 <script>
-import MenuComponent from './components/MenuComponent.vue';
+import MenuDepartamentos from './components/MenuDepartamento.vue';
 export default {
   name: 'App',
   components: {
-    MenuComponent
+    MenuDepartamentos
   }
 }
 </script>

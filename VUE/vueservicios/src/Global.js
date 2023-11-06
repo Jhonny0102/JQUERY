@@ -1,7 +1,7 @@
 var Global = {
 
-    urlApiCoches: "https://apicochespaco.azurewebsites.net/"
-
+    apiCoches:"https://apicochespaco.azurewebsites.net/",
+    apiEmpleados:"https://apiempleadosfullstack.azurewebsites.net/"
 }
 
 export default Global;
