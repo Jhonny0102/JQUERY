@@ -1,14 +1,15 @@
 <template>
     <div>
         <h1>Series</h1>
-        <div class="card mb-3" v-if="recibido == true">
-            <div class="card-body" v-for="ser in serie" :key="ser">
-                <img :src="ser.imagen" class="card-img-top">
-                <h5 class="card-title">Titulo: {{ser.nombre}}</h5>
-                <h5 class="card-title">Puntuación: {{ser.puntuacion}}</h5>
-                <h5 class="card-title">Año: {{ser.anyo}}</h5>
+        <div class="card mb-3">
+            <div class="card-body">
+                <img :src="serie.imagen" class="card-img-top">
+                <h5 class="card-title">Titulo: {{serie.nombre}}</h5>
+                <h5 class="card-title">Puntuación: {{serie.puntuacion}}</h5>
+                <h5 class="card-title">Año: {{serie.anyo}}</h5>
             </div>
         </div>
+        <router-link class="btn btn-success" :to="'/personajes/'+ serie.idSerie">Personajes</router-link>
     </div>
 </template>
 
@@ -23,14 +24,24 @@
                 recibido:false
             }
         },
-        mounted(){
-            var id = this.$route.params.id
-            service.findSerie(id).then(result => {
+        methods:{
+            findSerie(){
+                var id = this.$route.params.id
+                service.findSerie(id).then(result => {
                 this.serie=result;
-                //console.log(this.serie);
                 this.recibido=true;
             })
-            console.log(this.serie.nombre);
+            }
+        },
+        mounted(){
+            this.findSerie();
+        },
+        watch:{
+            '$route.params.id'(nextVal,oldVal){
+                if(nextVal != oldVal){
+                    this.findSerie();
+                }
+            }
         }
     }
 </script>

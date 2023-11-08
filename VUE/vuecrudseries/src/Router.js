@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import App from './App.vue';
 import SeriesComponent from './components/SeriesComponent.vue';
+import PersonsajesComponent from './components/PersonajesComponent.vue';
 
 const myRoutes = [
     {
@@ -8,6 +9,9 @@ const myRoutes = [
     },
     {
         path:"/series/:id" , component: SeriesComponent
+    },
+    {
+        path:"/personajes/:id" , component : PersonsajesComponent
     }
 ]
 

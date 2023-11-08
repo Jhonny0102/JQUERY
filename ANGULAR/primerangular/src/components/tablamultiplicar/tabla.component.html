@@ -1,0 +1,15 @@
+<div>
+    <h1>Tabla Multiplicacion</h1>
+    <form #tablaForm="ngForm">
+        <label>Introduce numero: </label>
+        <input type="number" name="cajanumero" #cajanumero/><br/>
+        <button (click)="multiplicacion()">
+            Pulsar
+        </button>
+    </form>
+    <ul>
+        <li *ngFor="let result of resultados; let i = index">
+            {{numeroGet}} * {{i}} = {{result}}
+        </li>
+    </ul>
+</div>

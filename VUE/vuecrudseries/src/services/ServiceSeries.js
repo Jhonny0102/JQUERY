@@ -22,14 +22,28 @@ export default class ServiceSeries{
 
             var request = "api/series/"+id;
             var url = Global.apiSeries + request;
-            var serie = [];
+            var serie = {};
             axios.get(url).then(response => {
-                serie = response;
+                serie = response.data;
                 //console.log(serie);
                 resolve(serie);
             })
         })
     }
 
+
+    findPersonajesSerie(id){
+        return new Promise(function(resolve){
+
+            var request = "api/series/personajesserie/"+id;
+            var url = Global.apiSeries + request ;
+            var personajes = [];
+            axios.get(url).then(response => {
+                personajes = response.data;
+                resolve(personajes);
+            })
+        })
+
+    }
 
 }

@@ -1,0 +1,50 @@
+<div>
+    <h1>Ejemplo directivas Angular</h1>
+    <h2 style="color: rgb(44, 74, 15);">Numero deportes: {{sports.length}}</h2>
+    
+    <!-- Directiva IF -->
+    <div *ngIf="sports.length < 7; then condiciontrue; else condicionelse"></div>
+
+
+    <ng-template #condicionelse>
+        <p style="color: blue;">
+            Tenemos 7 o mas
+        </p>
+    </ng-template>
+    <ng-template #condiciontrue>
+        <p style="color: red;">
+            Tiene menos de 7 deportes
+        </p>
+    </ng-template>
+
+
+    <h4 style="color: rgb(211, 123, 79);">
+        El primer deporte es {{sports[0]}}
+    </h4>
+
+    <!-- Bucle con directiva FOR -->
+    <ul>
+        <li *ngFor="let depor of sports; let i = index">
+            Index: {{i}} , Deporte: {{depor}}
+        </li>
+    </ul>
+
+    <hr/>
+
+    <h2>Numeros de la Lista</h2>
+    <ul>
+        <li *ngFor="let num of numeros" [style.color]="num % 2 == 0 ? 'green' : 'red'">
+            {{num}}
+        </li>
+    </ul>
+
+    <hr/>
+    <ul>
+        <li *ngFor="let num of numeros" 
+            [class.par]="num % 2 == 0"
+            [class.impar]="num % 2 == 1">
+            {{num}}
+        </li>
+    </ul>
+    <!-- Falta la utima de ngclass -->
+</div>

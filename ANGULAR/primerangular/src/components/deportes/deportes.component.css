@@ -1,0 +1,11 @@
+.par {
+    background-color: white;
+    color: darkcyan;
+    text-decoration: solid;
+}
+
+.impar {
+    background-color: black;
+    color: tomato;
+    text-decoration: underline;
+}
