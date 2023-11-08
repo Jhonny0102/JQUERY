@@ -1,0 +1,7 @@
+==========================
+==== Comandos Angular ====
+==========================
+
+1. Instalar Angular: npm install -g @angular/cli@latest 
+2. Crear Proyecto: ng new "nombre"
+3. Lanzar servidor: ng serve
