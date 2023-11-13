@@ -1,0 +1,17 @@
+<div>
+    <h1>Numero Doble</h1>
+    <button (click)="enviar(66)">Doble 66</button>
+    <button (click)="enviar(56)">Doble 56</button>
+    <button (click)="enviar(143)">Doble 143</button>
+    <button (click)="goToHome()">Home</button>
+    <div *ngIf="numero">
+        <h1>
+            El doble de {{numero}} es {{doble}}
+        </h1>
+    </div>
+    <div *ngIf="!numero">
+        <h1>
+            No tenemos parametro numero
+        </h1>
+    </div>
+</div>

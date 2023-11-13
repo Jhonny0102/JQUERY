@@ -1,0 +1,10 @@
+<div>
+    <h1>Ejemplos Productos Model</h1>
+    <div *ngFor="let producto of productos">
+        <h2 style="color: lightslategray;">
+            {{producto.nombre}}, Precio: {{producto.precio}}
+        </h2>
+        <img src="{{producto.imagen}}" style="width: 250px; height: 250px;"/><br/>
+        <button>Detalles</button>
+    </div>
+</div>
