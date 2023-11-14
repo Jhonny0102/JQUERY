@@ -1,10 +1,13 @@
 <div>
     <h1>Ejemplos Productos Model</h1>
     <div *ngFor="let producto of productos">
-        <h2 style="color: lightslategray;">
+        <h2 style="color:blue">
             {{producto.nombre}}, Precio: {{producto.precio}}
         </h2>
-        <img src="{{producto.imagen}}" style="width: 250px; height: 250px;"/><br/>
-        <button>Detalles</button>
+        <img src="{{producto.imagen}}"
+            style="width: 250px; height: 250px;"/>
+        <a [routerLink]="['/detalleproducto', producto.nombre, producto.imagen, producto.precio]">
+            Detalle
+        </a>
     </div>
 </div>

@@ -1,0 +1,35 @@
+<div>
+    <h1>Libreria</h1>
+    <hr/>
+    <div>
+        <h2>Datos nuevo comic</h2>
+        <form>
+            <label>Titulo</label>
+            <input type="text"/><br/>
+            <label>Imagen</label>
+            <input type="text"/><br/>
+            <label>Descripcion</label>
+            <input type="text"><br/>
+            <button>Añadir</button>
+        </form>
+    </div>
+    <hr/>
+
+    <!-- Mostraremos el mensaje si hay algo escrito -->
+    <div *ngIf="mensaje">
+        <h2 style="color: white; background-color: orange;">{{mensaje}}</h2>
+    </div>
+    <hr/>
+
+    <!-- Este contenedor llama al hijo tantas veces como comics haya
+    Dentro del bucle , insertamos en la llamada del hijo una propiedad y su
+    valor, en este caso la propiedad comic y su valor que es el model. Tambien
+    le enviamos un metodo del padre(libreria) -->
+    <div *ngFor="let comic of comics let i = index">
+        <!-- Enviamos el model completo -->
+        <app-comic [comicPropiedad]="comic"
+        (comicSeleccionado)="comicSeleccionado($event)"
+        (comicEliminado)="comicEliminado($event)">
+        </app-comic>
+    </div>
+</div>

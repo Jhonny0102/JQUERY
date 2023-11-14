@@ -1,0 +1,10 @@
+<div>
+    <a [routerLink]="['/productos']">Volver a productos</a>
+    <div *ngIf="producto">
+        <h1>Detalle producto</h1>
+        <h2 style="color:blueviolet">
+            {{producto.nombre}}, Precio: {{producto.precio}}
+        </h2>
+        <img src="{{producto.imagen}}" style="width: 150px; height: 150px;"/>
+    </div>    
+</div>
