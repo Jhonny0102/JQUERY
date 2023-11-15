@@ -5,7 +5,7 @@
         <select name="cajafunciones" [(ngModel)]="seleccionados" multiple size="3">
             <option *ngFor="let func of funciones">{{func}}</option>
         </select>
-        <button (click)="getPlantillaVarios()">
+        <button (click)="getPlantillaVarios()" class="btn btn-success">
             Buscar
         </button>
         <div *ngIf="empleados">
