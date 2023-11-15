@@ -1,0 +1,33 @@
+<div>
+    <h1>Informacion de la plantilla</h1>
+    <form #form="ngForm">
+        <label>Seleccione funcion: </label>
+        <select name="cajafuncion" #cajafuncion (change)="getEmpleados()">
+            <option *ngFor="let func of funciones" value="{{func}}">
+                {{func}}
+            </option>
+        </select>
+    </form>
+    <div *ngIf="plantilla">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Apellido</th>
+                    <th>ID Hospital</th>
+                    <th>ID Sala</th>
+                    <th>Funcion</th>
+                    <th>Turno</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let person of plantilla">
+                    <td>{{person.apellido}}</td>
+                    <td>{{person.idHospital}}</td>
+                    <td>{{person.idSala}}</td>
+                    <td>{{person.funcion}}</td>
+                    <td>{{person.turno}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
