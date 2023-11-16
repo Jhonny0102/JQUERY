@@ -15,13 +15,13 @@ export class ServiceEmpleados{
         return this._http.get(url);
     }
 
-    getPlantilla(funcion: any):Observable<any>{
+    getPlantilla(funcion: string):Observable<any>{
         var request = "api/plantilla/plantillafuncion/"+funcion;
         var url = environment.utlApiEmpleados + request;
         return this._http.get(url);
     }
 
-    getPlantillaVarios(funcionesSeleccionadas: any):Observable<any>{
+    getPlantillaVarios(funcionesSeleccionadas: Array<any>):Observable<any>{
         var parte1 = "api/plantilla/plantillafunciones?";
         var parte2 = "";
         for(let i=0 ; i < funcionesSeleccionadas.length ;i++){
@@ -33,3 +33,11 @@ export class ServiceEmpleados{
     }
 
 }
+
+
+//                          ********************************
+
+// Aqui se hara todas las funciones , ademas tambien se agrega todas las dependencias
+// como Injectable, HttpCLiente,Observable y environment(donde cogeremos la url)
+
+//                          ********************************
