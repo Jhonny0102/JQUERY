@@ -1,23 +1,22 @@
-// 1.Importamos todos los componentes necesarios
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import {Observable} from "rxjs";
+import { Series } from "../models/Series";
 import { environment } from "src/environments/environment.development";
-import { Serie } from "../models/Serie";
-import { HttpClient } from "@angular/common/http";
+import {HttpClient , HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 
-export class ServiceSerie{
+export class ServiceSeries {
 
-    constructor(private _http:HttpClient){}
+    constructor(private _http: HttpClient){}
 
-    getSeries():Observable<any>{
+    getTodasSeries():Observable<any>{
         var request = "api/series";
         var url = environment.urlApiSeries + request;
         return this._http.get(url);
     }
 
-    getInfoSerie(id: number):Observable<any>{
+    getInfoSerie(id: string):Observable<any>{
         var request = "api/series/"+id;
         var url = environment.urlApiSeries + request;
         return this._http.get(url);

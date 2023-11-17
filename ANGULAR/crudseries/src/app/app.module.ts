@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { rounting, appRoutingProvider } from './app.routing';
-
+//Recalco, importante importar estas extensiones
+import { appRoutingProvider, routing } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
-import { ServiceSerie } from './services/service.series';
+import { ServiceSeries } from './services/service.series';
 import { SerieComponent } from './components/serie/serie.component';
 
 @NgModule({
@@ -20,9 +19,9 @@ import { SerieComponent } from './components/serie/serie.component';
     SerieComponent
   ],
   imports: [
-    BrowserModule,rounting,FormsModule,HttpClientModule
+    BrowserModule,routing,HttpClientModule,FormsModule
   ],
-  providers: [appRoutingProvider,ServiceSerie],
+  providers: [appRoutingProvider,ServiceSeries],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-export class Personaje {
+export class Personajes{
 
     constructor(
         public idPersonaje: number,

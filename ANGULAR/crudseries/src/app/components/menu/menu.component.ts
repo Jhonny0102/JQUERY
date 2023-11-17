@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceSerie } from 'src/app/services/service.series';
-import { Serie } from 'src/app/models/Serie';
+import { ServiceSeries } from 'src/app/services/service.series';
+import { Series } from 'src/app/models/Series';
 
 @Component({
   selector: 'app-menu',
@@ -9,15 +9,16 @@ import { Serie } from 'src/app/models/Serie';
 })
 export class MenuComponent implements OnInit {
 
-  public series !: Array<any>;
+  public series !: Array<Series>;
 
-  constructor(private _serviceSerie: ServiceSerie){}
+  constructor(private _serviceSeries: ServiceSeries){}
 
   ngOnInit(): void {
-    
-    this._serviceSerie.getSeries().subscribe(response => {
 
+    this._serviceSeries.getTodasSeries().subscribe(response => {
+      console.log("Objeto Series guardado");
       this.series = response;
     })
   }
+
 }

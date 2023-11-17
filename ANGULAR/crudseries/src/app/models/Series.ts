@@ -1,7 +1,5 @@
-export class Serie {
-
+export class Series{
     constructor(
-
         public idSerie: number,
         public nombre: string,
         public imagen: string,

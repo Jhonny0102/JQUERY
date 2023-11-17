@@ -1,0 +1,35 @@
+<div style="width: 60%; margin: 0 auto;">
+    <h1>Login</h1>
+    <form #empleadoForm="ngForm">
+        <fieldset>
+            <label>Usuario</label>
+            <input type="text" name="cajausuario" #cajausuario class="form-control">
+            <label>Password</label>
+            <input type="text" name="cajapassword" #cajapassword class="form-control">
+            <button class="btn btn-success" (click)="callPostToken()">
+                Login
+            </button>
+        </fieldset>
+    </form>
+    <div *ngIf="!token">
+        <h3 style="color: red;">Necesitas el token</h3>
+    </div>
+    <div *ngIf="token">
+        <h3 style="color: green;">Puedes mostrar ya los empleados</h3>
+        <button class="btn btn-info" (click)="callGetEmpleados()">
+            Mostrar Empleados
+        </button>
+        <table *ngIf="okey == true">
+            <thead>
+                <tr>
+                    <th>Apellido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of empleados">
+                    <td>{{empleado.apellido}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

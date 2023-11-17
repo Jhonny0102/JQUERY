@@ -1,7 +1,8 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { ServiceSerie } from 'src/app/services/service.series';
-import { Serie } from 'src/app/models/Serie';
-import { Params, ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
+import { ServiceSeries } from 'src/app/services/service.series';
+import { Series } from 'src/app/models/Series';
+import  {Params , ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-serie',
@@ -10,22 +11,21 @@ import { Params, ActivatedRoute} from '@angular/router';
 })
 export class SerieComponent implements OnInit {
 
-  public infoSerie !: Serie;
+  public infoSerie !: Array<Series>;
 
-  public idSerie !: number;
+  public idEnviada !: string;
 
-  constructor(
-    private _serviceSerie: ServiceSerie,
-    private _activeRoute: ActivatedRoute
-  ){}
+  constructor(private _service: ServiceSeries, private _activeRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    this._activeRoute.params.subscribe((parametros: Params) => {
-      var id = parseInt(parametros["id"]);
-      this.idSerie = id;
-    })
 
-    this._serviceSerie.getInfoSerie(this.idSerie).subscribe(response => {
+    this._activeRoute.params.subscribe( (parametros : Params) => {
+
+      this.idEnviada = parametros["id"];
+    })
+    
+    this._service.getInfoSerie(this.idEnviada).subscribe(response => {
+      console.log("ID recibida " + this.idEnviada);
       this.infoSerie = response;
     })
   }
