@@ -5,3 +5,5 @@
 1. Instalar Angular: npm install -g @angular/cli@latest 
 2. Crear Proyecto: ng new "nombre"
 3. Lanzar servidor: ng serve
+4. Crear componentes: ng g component components/"nombre"
+5. Crear environment : ng g environments
