@@ -1,0 +1,7 @@
+<div *ngIf="perfil">
+    <h3>Nombre: {{perfil.nombre}}</h3>
+    <p>IdUsuario: {{perfil.idUsuario}}</p>
+    <p>Email: {{perfil.email}}</p>
+    <p>Password: {{perfil.pass}}</p>
+    <a [routerLink]="['/opciones']" class="btn btn-success">Volver</a>
+</div>

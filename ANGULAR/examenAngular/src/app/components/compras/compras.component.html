@@ -1,0 +1,23 @@
+<div>
+    <div *ngIf="compras">
+        <a [routerLink]="['/opciones']" class="btn btn-outline-success">Volver</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id Cubo</th>
+                    <th>Id Pedido</th>
+                    <th>Id Usuario</th>
+                    <th>Fecha Pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                    <td>{{compra.idCubo}}</td>
+                    <td>{{compra.idPedido}}</td>
+                    <td>{{compra.idUsuario}}</td>
+                    <td>{{compra.fechaPedido}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <div *ngIf="cubo">
+        <div class="card" style="width: 18rem;">
+            <img src="{{cubo.imagen}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{cubo.nombre}}</h5>
+              <p class="card-text">Marca: {{cubo.marca}}</p>
+            </div>
+            <a [routerLink]="['/']" class="btn btn-outline-success">Volver</a>
+        </div>
+    </div>
+    <h3>Comentarios: </h3>
+    <div *ngFor="let detalle of detalles">
+        <h4>Usuario</h4>
+        <p>Fecha Publicacion: {{detalle.fechaComentario}}</p>
+        <p>Comentario: {{detalle.comentario}}</p>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div>
+    <h1>{{nombreMarca}}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cubo of cubos">
+                <td><img src="{{cubo.imagen}}" style="width: 200px; height: 200px;" ></td>
+                <td>{{cubo.nombre}}</td>
+                <td>{{cubo.precio}} $</td>
+                <td><a [routerLink]="['/detallescubo/'+cubo.idCubo]" class="btn btn-success">Detalles</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
